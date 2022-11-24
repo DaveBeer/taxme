@@ -24,7 +24,7 @@ enum class Label
     // output columns
     ClosedPositionQuantity,
     Gain,
-    IsTaxed, // also input in case of dry run (keep Yes values, else fill No)
+    IsTaxed, // also input column (keep Yes values)
 
     // values
     TypeBuy,
