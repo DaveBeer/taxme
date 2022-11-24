@@ -14,11 +14,13 @@ so for example:
 taxme 2018 tax DataLabels.cfg BTC.csv ETH.csv
 ```
 
-which depending on input data may output for example (income - cost = gain/loss):
+which depending on input data may output for example:
 
 > Gains for BTC: 1600 - 1200 = 400  
 > Gains for ETH: 5850 - 6000 = -150  
 > Total gains for year 2018: 7450 - 7200 = 250
+
+Income, cost and gain or loss for each asset is reported in form `income - cost = gain/loss`. For complete example including all input and output files see [example](/example).
 
 ## Input files
 
@@ -26,17 +28,7 @@ Taxme works with data provided as csv files. Each csv file represents single ass
 
 ### Asset data - csv file contents
 
-Asset file contains entries which represent change in amount of asset held. Entries are typically trades, but can also represent gifts and other events which user decides to account for. Example file containing entries on single asset may look like this (formatted for display, not actual contents of csv file):
-
-|date|type|unit price in USD|quantity|quantity sold|gain / loss in USD (FIFO)|tax already reported|transaction origin|ID|note|
-|---|---|---|---|---|---|---|---|---|---|
-|2017-01-31|buy|4000|2|2|n/a|n/a|Coinbase|57fe||
-|2017-02-18|buy|6000|1|0.7|n/a|n/a|Coinbase|513ef||
-|2017-04-08|sell|3000|1|n/a|-1000|yes|GDAX|687e||
-|2017-09-27|sell|5000|1.5|n/a|500|yes|Kraken|45fa|exchange BTC to ETH|
-|2018-01-15|sell|8000|0.2|n/a|400|no|GDAX|13ce||
-|2018-05-17|buy|7000|1|0|n/a|n/a|Kraken|87fe|exchange ETH to BTC|
-|2018-08-14|buy|0|0.01|0|n/a|n/a|Coinbase|refxxx|gift - bonus for signup with referral|
+Asset file contains entries which represent change in amount of asset held. Entries are typically trades, but can also represent gifts and other events which user decides to account for. See [example asset file](/example/BTC.csv).
 
 Required columns for each entry are date (in yyyy-mm-dd format), type (buy or sell), unit price and quantity bought or sold. Entries are expected to be sorted by date from oldest to newest in order for FIFO method to work correctly.
 
@@ -46,22 +38,7 @@ All other columns are optional and taxme does not touch them. These can contain 
 
 ### Asset data labels configuration
 
-Since asset data are meant to be human readable to serve as official records for book keeping by users, configuration of data labels must be passed to taxme in order for taxme to understand them. For example some user might want to use *unit price in USD* and *quantity* as column labels and *buy* and *sell* as labels for types of entries, while another user might want to label their data with *unit price (EUR)*, *volume*, *B* and *S* instead and yet another user might use completely different language. Configuration of data labels looks like this (values on the right side of `=` are user choice and must fit labels used in asset files):
-
-```
-Date=date
-Type=type
-Type.Buy=buy
-Type.Sell=sell
-UnitPrice=unit price in USD
-Quantity=quantity
-ClosedPositionQuantity=quantity sold
-Gain=gain / loss in USD (FIFO)
-IsTaxed=tax already reported
-Yes=yes
-No=no
-NotAvailable=n/a
-```
+Since asset data are meant to be human readable to serve as official records for book keeping by users, configuration of data labels must be passed to taxme in order for taxme to understand them. For example some user might want to use *unit price in USD* and *quantity* as column labels and *buy* and *sell* as labels for types of entries, while another user might want to label their data with *unit price (EUR)*, *volume*, *B* and *S* instead and yet another user might use completely different language. See [example configuration of data labels](/example/DataLabels.cfg) (values on the right side of `=` are user choice and must fit labels used in asset files).
 
 ## Output files
 
