@@ -138,7 +138,7 @@ void ProcessAssets(Inputs const& inputs)
 {
     FinancialOutcome outcomeTotal = {0, 0};
 
-    for (auto const fileName : inputs.assetFileNames)
+    for (auto const& fileName : inputs.assetFileNames)
     {
         auto const outcome = ProcessAsset(inputs, fileName);
         outcomeTotal.income += outcome.income;
