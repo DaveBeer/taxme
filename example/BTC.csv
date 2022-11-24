@@ -1,0 +1,8 @@
+date,type,unit price in USD,quantity,quantity sold,gain / loss in USD (FIFO),tax already reported,transaction origin,ID,note
+2017-01-31,buy,4000,2,2,n/a,n/a,Coinbase,57fe,
+2017-02-18,buy,6000,1,0.7,n/a,n/a,Coinbase,513ef,
+2017-04-08,sell,3000,1,n/a,-1000,yes,GDAX,687e,
+2017-09-27,sell,5000,1.5,n/a,500,yes,Kraken,45fa,exchange BTC to ETH
+2018-01-15,sell,8000,0.2,,,,GDAX,13ce,
+2018-05-17,buy,7000,1,,,,Kraken,87fe,exchange ETH to BTC
+2018-08-14,buy,0,0.01,,,,Coinbase,refxxx,gift - bonus for signup with referral
